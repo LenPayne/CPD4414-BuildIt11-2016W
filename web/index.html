@@ -12,16 +12,26 @@ and open the template in the editor.
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script>
             function getProducts() {
-                $.getJSON('r/product', function(data) {
+                $.getJSON('r/product', function (data) {
                     $('#contents').html('');
                     for (var i = 0; i < data.length; i++) {
-                        $('#contents').append("<p>" + data[i].Name + "</p>");
+                        $('#contents').append("<tr><td>" + data[i].Name + "</td>" +
+                                "<td>" + data[i].Description + "</td><td>" +
+                                data[i].Quantity + "</td><td>" +
+                                "<button onclick=del(" + data[i].ProductID + ")>Delete</button></td></tr>");
                     }
                 });
             }
-            $(document).ready(function() {
+            function del(id) {
+                $.ajax({
+                    url: 'r/product/' + id,
+                    method: 'delete',
+                    success: getProducts
+                });
+            }
+            $(document).ready(function () {
                 getProducts();
-                $('#addButton').click(function() {
+                $('#addButton').click(function () {
                     $.ajax({
                         url: 'r/product',
                         method: 'post',
