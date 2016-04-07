@@ -1,3 +1,12 @@
+CREATE DATABASE Products;
+USE Products;
+
+CREATE TABLE Product (
+    ProductID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255),
+    Description TEXT,
+    Quantity INT
+);
 insert into Product (Name, Description, Quantity) values ('Arterioforce', 'Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.', 39);
 insert into Product (Name, Description, Quantity) values ('Treatment Set TS350619', 'Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.
 
